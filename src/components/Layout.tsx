@@ -104,10 +104,15 @@ const AppLayout = (props: React.PropsWithChildren<Props>) => {
     return null;
   }
   const sliceAddress = (str: string) => {
-    if (str?.length > 35) {
-      return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+    try {
+      if (str?.length > 35) {
+        return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+      }
+      return str;
     }
-    return str;
+    catch {
+      return "error"
+    }
   }
 
   const copyAddress = () => {
@@ -167,7 +172,7 @@ const AppLayout = (props: React.PropsWithChildren<Props>) => {
       >
         <div style={{ justifyContent: 'center', display: "flex" }}>
           <Link href="/overview">
-            <img src='/LecleLogoMini.png'></img>
+            <img style={{ width: "100px" }} src='https://img.money.com/2022/09/Best-Crypto-Wallets-Icons-4.png?quality=60'></img>
           </Link>
         </div>
         <Menu

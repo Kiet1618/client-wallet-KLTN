@@ -6,30 +6,36 @@ function getWindow(): Window {
 
 const win = getWindow();
 type ShareDevice = DeviceKey;
+type ShareDeviceByEmail = Array<{
+    email: string;
+    share: DeviceKey;
+}>;
 
-export const storeShareDeviceOnLocalStorage = async (share: DeviceKey): Promise<void> => {
+export const storeShareDeviceOnLocalStorage = async (share: DeviceKey, email: string): Promise<void> => {
     try {
-        const fileStr = JSON.stringify(share);
-        // if (!storageAvailable("localStorage")) {
-        //     throw Error("Storage unavailable");
-        // }
+        const currentKeys = await getShareDeviceFromLocalStorage() || [];
+        const exeisted = currentKeys.find((item) => item.email === email);
+        if (exeisted) {
+            return;
+        }
+        const updatedKeys = [...currentKeys, { email, share }];
+        const fileStr = JSON.stringify(updatedKeys);
         win.localStorage.setItem("share-device", fileStr);
     } catch (error) {
-        return;
+        console.error(error);
     }
 };
 
-export const getShareDeviceFromLocalStorage = (): ShareDevice => {
+export const getShareDeviceFromLocalStorage = (): ShareDeviceByEmail => {
     try {
-        // if (!storageAvailable("localStorage")) {
-        //     throw Error("Storage unavailable");
-        // }
         const foundFile = win.localStorage.getItem("share-device");
-        return JSON.parse(foundFile || "{}");
+        return JSON.parse(foundFile) || [];
     } catch (error) {
-        return null
+        console.error(error);
+        return [];
     }
 };
+
 export const getListTokens = () => {
     try {
         const data = win.localStorage.getItem('currentListTokens');

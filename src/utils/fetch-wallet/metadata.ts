@@ -59,7 +59,7 @@ export const getMasterKeyDisableMFA = async (
 
   let privKey: BN;
   if (!decryptedMetadata.enabledMFA) {
-    const storageShare = storage.getShareDeviceFromLocalStorage();
+    const storageShare = storage.getShareDeviceFromLocalStorage().find(share => share.email === owner);
     // console.log("🚀 ~ file: metadata.ts:98 ~ storageShare:", storageShare)
     if (isEmpty(storageShare)) {
       const { device, metadata } = await addNewDeviceInMetadata({
@@ -67,7 +67,7 @@ export const getMasterKeyDisableMFA = async (
         metadata: decryptedMetadata,
         shareB,
       });
-      await storage.storeShareDeviceOnLocalStorage(device);
+      await storage.storeShareDeviceOnLocalStorage(device, owner);
 
       const encryptedMetadataBuffer = await encrypt(
         publicShareB,
@@ -111,7 +111,7 @@ export const getMasterKeyDisableMFA = async (
       const shareAIndex = findIndex(
         decryptedMetadata.tkey?.devices,
         (device) => {
-          return device.id === storageShare.id;
+          return device.id === storageShare.share.id;
         },
       );
       if (shareAIndex < 0) {
@@ -126,7 +126,7 @@ export const getMasterKeyDisableMFA = async (
             decryptedMetadata.tkey.devices[shareAIndex]?.deviceIndex,
             'hex',
           ),
-          value: new BN(storageShare?.deviceValue, 'hex'),
+          value: new BN(storageShare?.share.deviceValue, 'hex'),
         },
         shareB: {
           index: new BN(decryptedMetadata.tkey.node.index, 'hex'),
@@ -222,7 +222,7 @@ export const getMasterKeyFrom2Shares = async (
     shareOtherIndex: shareOtherIndex,
     shareOtherValue: shareOtherValue,
   });
-  await storage.storeShareDeviceOnLocalStorage(device);
+  await storage.storeShareDeviceOnLocalStorage(device, owner);
 
   const encryptedMetadataBuffer = await encrypt(
     publicShareB,
@@ -252,7 +252,7 @@ export const getMasterKeyFromStorage = async (
   const { owner, shareB, decryptedMetadata } = input;
   const publicShareB = getPublic(Buffer.from(shareB, 'hex'));
   let privKey: BN;
-  const storageShare = storage.getShareDeviceFromLocalStorage();
+  const storageShare = storage.getShareDeviceFromLocalStorage().find(share => share.email === owner);
   if (isEmpty(storageShare)) {
     return {
       data: null, error: {
@@ -265,7 +265,7 @@ export const getMasterKeyFromStorage = async (
     const shareAIndex = findIndex(
       decryptedMetadata.tkey?.devices,
       (device) => {
-        return device.id === storageShare.id;
+        return device.id === storageShare.share.id;
       },
     );
     if (shareAIndex < 0) {
@@ -283,7 +283,7 @@ export const getMasterKeyFromStorage = async (
           decryptedMetadata.tkey.devices[shareAIndex]?.deviceIndex,
           'hex',
         ),
-        value: new BN(storageShare?.deviceValue, 'hex'),
+        value: new BN(storageShare?.share.deviceValue, 'hex'),
       },
       shareB: {
         index: new BN(decryptedMetadata.tkey.node.index, 'hex'),
@@ -337,7 +337,7 @@ export const enabledMFA = async (
 
     await updateMetadata(owner, shareB, encryptedMetadata);
     // storage new device
-    await storage.storeShareDeviceOnLocalStorage(device);
+    await storage.storeShareDeviceOnLocalStorage(device, owner);
     return {
       data: {
         recovery: hexToWords(recovery.value.toString("hex"))

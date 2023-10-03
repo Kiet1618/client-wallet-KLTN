@@ -67,10 +67,15 @@ export default function Wallet() {
     return '';
   }
   const sliceAddress = (str: string) => {
-    if (str.length > 35) {
-      return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+    try {
+      if (str.length > 35) {
+        return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+      }
+      return str;
     }
-    return str;
+    catch {
+      return "error"
+    }
   }
 
   const copyAddress = () => {
@@ -192,7 +197,7 @@ export default function Wallet() {
   };
 
   return (
-    <div>
+    <div >
       <h2 style={{ color: 'white', margin: '20px 40px' }} >Transfer Detail</h2>
       <Row gutter={16}>
         <Col sm={24} xs={24} md={12} lg={12} xl={12}>

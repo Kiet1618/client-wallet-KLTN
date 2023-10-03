@@ -237,7 +237,7 @@ export const updateMetadataRecoveryMFA = async (
     },
   };
 
-  return { metadata: newMetadata,  recovery: { value: newRecoveryValue } };
+  return { metadata: newMetadata, recovery: { value: newRecoveryValue } };
 };
 
 

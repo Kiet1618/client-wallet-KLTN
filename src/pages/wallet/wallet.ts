@@ -23,16 +23,18 @@ export const Transfer = styled(Form)`
 
 
 export const SelectCustom = styled(Select)`
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     text-align: left;
     .ant-select-selector{
       height: 50px !important;
       border-radius: 5px !important;
+      color: #FFFFFF !important;
       background-color: #202020 !important;
       border: solid 1px rgb(100,100,100, 0.2) !important;
 
     }
     .ant-select-selection-item{
+      color: #FFFFFF !important;
       height: 50px !important;
       padding-top: 9px !important;
       font-size: 18px;
@@ -42,7 +44,7 @@ export const SelectCustom = styled(Select)`
     background-color: #292929 !important;
     border-radius: 5px !important;
     border: solid 1px rgb(100,100,100, 0.2) !important;
-
+      color: #FFFFFF !important;
     }
     &:hover{
     }
@@ -65,9 +67,12 @@ export const InputCustom = styled(Input)`
         height: 50px;
         border-radius: 5px;
         background-color: #202020 !important;
-        color: #fff;
+        color: #fff !important;
         border: solid 1px rgb(100,100,100, 0.2);
         display: inline-block;
+        ::placeholder {
+        color: gray; /* Change this to the desired placeholder color */
+    }
 
 `;
 export const InputCustom2 = styled(Input)`
@@ -79,6 +84,9 @@ export const InputCustom2 = styled(Input)`
   color: #fff;
   display: inline-block;
   border: solid 1px rgb(100,100,100, 0.2);
+  ::placeholder {
+        color: gray;
+        }
 `;
 export const GasFeeTag = styled.div`
   width: 100%;
@@ -98,6 +106,8 @@ export const SelectCustom2 = styled(Select)`
 
     .ant-select-selector{
       height: 50px !important;
+            color: #FFFFFF !important;
+
       border-radius: 5px !important;
       background-color: #202020 !important;
       border: solid 1px rgb(100,100,100, 0.2) !important;
@@ -156,6 +166,7 @@ export const CustomAddressInput = styled(Form.Item)`
 `;
 export const CustomSelectToken = styled(Form.Item)`
   margin-top: 15px;
+  color: white !important;
 `;
 export const CustomTypeAddressInput = styled(Form.Item)`
 `;

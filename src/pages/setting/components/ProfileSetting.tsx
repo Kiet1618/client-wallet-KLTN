@@ -34,10 +34,15 @@ export default function ProfileSetting() {
     return null;
   }
   const sliceAddress = (str: string) => {
-    if (str.length > 35) {
-      return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+    try {
+      if (str.length > 35) {
+        return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
+      }
+      return str;
     }
-    return str;
+    catch {
+      return "";
+    }
   }
 
   const copyAddress = () => {

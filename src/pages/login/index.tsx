@@ -11,10 +11,6 @@ import { Row, Col } from 'antd';
 export default function Login() {
     const [error, setError] = useState('');
 
-    const ImgLoginPage = styled.img`
-        height: 70vh;
-        margin-top: 12vh;
-    `;
     const Login = styled.div`
         height: 100vh;
         overflow: hidden;
@@ -42,13 +38,7 @@ export default function Login() {
         border-radius: 20px;
     `;
     //slider
-    const CustomSlider = styled(Slider)`
-        .slick-dots li button:before {
-            font-size: 32px;
-            color: white !important;
-        }
 
-    `;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -64,44 +54,28 @@ export default function Login() {
             setError(error.message);
         }
     };
-    
 
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        loop: true,
-        cssEase: 'linear',
-        autoplay: true,
-        autoplaySpeed: 5000,
-        button: false,
-        arrows: false,
-        prevArrow: false,
-        nextArrow: false,
 
-    };
 
 
     return (
         <Login>
             <Row>
-                <Col span={16}>
-                    <CustomSlider {...settings}>
-                        <ImgLoginPage src="/imageLogin1.svg"></ImgLoginPage>
-                        <ImgLoginPage src="/imageLogin2.svg"></ImgLoginPage>
-                        <ImgLoginPage src="/imageLogin3.svg"></ImgLoginPage>
-                    </CustomSlider>
+                <Col span={14} >
+                    <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
+                        <img style={{ marginTop: "100px" }} src='https://www.appdupe.com/img/cryptocurrency-wallet-development/banner-img.png'></img>
+                    </div>
                 </Col>
-                <Col span={8} style={{ textAlign: 'center' }}>
+                <Col span={10} style={{ textAlign: 'center' }}>
                     <IpnutLogin>
-                        <img src="/logoLogin.png" style={{ marginBottom: '16vh' }} alt="" />
-                        <br></br>
-                        <Button style={{ margin: 10, width: 50, height: 50, }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/logoGoogle.png'></img>} onClick={handleSubmit}></Button>
-                        <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/facebookLogo.png'></img>}></Button>
-                        <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/githubLogo.png'></img>} ></Button>
-                        <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 25, height: 25 }} src='/iconMore.png'></img>} ></Button>
+                        <img width={"300px"} src='https://img.money.com/2022/09/Best-Crypto-Wallets-Icons-4.png?quality=60'></img>
 
+                        <div style={{ marginTop: "150px" }}>
+                            <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/logoGoogle.png'></img>} onClick={handleSubmit}></Button>
+                            <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/facebookLogo.png'></img>}></Button>
+                            <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/githubLogo.png'></img>} ></Button>
+                            <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 25, height: 25 }} src='/iconMore.png'></img>} ></Button>
+                        </div>
                         <Input.Group compact>
                             <Input placeholder='Email' style={{ width: 300, marginTop: 10, borderRadius: 5, textAlign: 'left', paddingLeft: 20, height: 40, borderColor: '#66729A' }} /> <br></br>
                             <ButtonOrigin style={{ width: 300, marginTop: 5, borderRadius: 5, height: 40 }} >Login with email</ButtonOrigin>
