@@ -172,7 +172,7 @@ const AppLayout = (props: React.PropsWithChildren<Props>) => {
       >
         <div style={{ justifyContent: 'center', display: "flex" }}>
           <Link href="/overview">
-            <img style={{ width: "100px" }} src='https://img.money.com/2022/09/Best-Crypto-Wallets-Icons-4.png?quality=60'></img>
+            <img style={{ width: "60px", margin: "5px" }} src='https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-DH-Cong-Nghe-Thong-Tin-UIT.png'></img>
           </Link>
         </div>
         <Menu
@@ -228,7 +228,8 @@ const AppLayout = (props: React.PropsWithChildren<Props>) => {
               options={[
                 { value: '1', label: 'Ethereum Mainnet' },
                 { value: '5', label: 'Goerli' },
-                { value: '56', label: 'Binance Smart Chain Mainnet' }
+                { value: '56', label: 'Binance Smart Chain Mainnet' },
+                { value: '97', label: 'Binance Smart Chain Testnet' }
               ]}
             />
             <ButtonInfo

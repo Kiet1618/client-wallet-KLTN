@@ -20,6 +20,11 @@ export const listNetWorks: ChainNetwork[] = [
         chainID: '56',
         apiScan: "https://api.bscscan.com/api?module=account&action=txlist&address={address}&sort=asc&apikey=I1JJ6MQZRU7BG9WNH1FU69M3T377FIC4JW",
         rpcUrls: 'https://bsc-dataseed1.binance.org',
+    },
+    {
+        chainID: '97',
+        apiScan: "https://api-testnet.bscscan.com/api?module=account&action=txlist&address={address}&sort=asc&apikey=I1JJ6MQZRU7BG9WNH1FU69M3T377FIC4JW",
+        rpcUrls: "wss://bsc-testnet.publicnode.com"
     }
 ];
 export const useBlockchain = (chainID: string = "1") => {

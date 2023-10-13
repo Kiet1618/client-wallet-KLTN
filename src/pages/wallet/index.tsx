@@ -68,7 +68,10 @@ export default function Wallet() {
   }
   const sliceAddress = (str: string) => {
     try {
-      if (str.length > 35) {
+      if (!str) {
+        return "";
+      }
+      if (str?.length > 35) {
         return str.substr(0, 5) + '...' + str.substr(str.length - 4, str.length);
       }
       return str;

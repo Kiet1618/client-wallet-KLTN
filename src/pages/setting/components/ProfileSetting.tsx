@@ -54,20 +54,20 @@ export default function ProfileSetting() {
 
   return (
     <Row gutter={16}>
-      <Col span={12}>
-        <CardProfile >
-          <img
-            style={{ borderRadius: '50%', width: '200px', marginTop: '100px', marginBottom: '30px' }}
-            alt="image"
-            src={session?.user?.image}
-          />
-          <h2 style={{ color: 'white', fontSize: '30px' }}>{session?.user?.name}</h2>
-          <h3 style={{ color: 'white', fontSize: '15px' }}>{session?.user?.email}</h3>
-          <a onClick={copyAddress}><h4 style={{ color: 'white', fontSize: '15px' }}><CopyOutlined style={{ marginRight: '5px' }} />{sliceAddress(renderAddress())}</h4></a>
-          <a onClick={exportPrivateKey} >Export Private Key</a>
 
-        </CardProfile >
-      </Col>
+      <CardProfile >
+        <img
+          style={{ borderRadius: '50%', width: '200px', marginTop: '100px', marginBottom: '30px' }}
+          alt="image"
+          src={session?.user?.image}
+        />
+        <h2 style={{ color: 'white', fontSize: '30px' }}>{session?.user?.name}</h2>
+        <h3 style={{ color: 'white', fontSize: '15px' }}>{session?.user?.email}</h3>
+        <a onClick={copyAddress}><h4 style={{ color: 'white', fontSize: '15px' }}><CopyOutlined style={{ marginRight: '5px' }} />{sliceAddress(renderAddress())}</h4></a>
+        <a onClick={exportPrivateKey} >Export Private Key</a>
+
+      </CardProfile >
+
       <Modal style={{ textAlign: 'center' }} title="Export Private Key" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} >
         <QRCode
           id='qrcode'

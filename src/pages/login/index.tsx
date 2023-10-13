@@ -63,14 +63,14 @@ export default function Login() {
             <Row>
                 <Col span={14} >
                     <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
-                        <img style={{ marginTop: "100px" }} src='https://www.appdupe.com/img/cryptocurrency-wallet-development/banner-img.png'></img>
+                        <img style={{ marginTop: "200px", width: "600px" }} src='https://cdn.haitrieu.com/wp-content/uploads/2021/10/Logo-DH-Cong-Nghe-Thong-Tin-UIT.png'></img>
                     </div>
                 </Col>
                 <Col span={10} style={{ textAlign: 'center' }}>
                     <IpnutLogin>
-                        <img width={"300px"} src='https://img.money.com/2022/09/Best-Crypto-Wallets-Icons-4.png?quality=60'></img>
+                        <img width={"400px"} src='https://www.uit.edu.vn/sites/vi/files/banner_uit.png'></img>
 
-                        <div style={{ marginTop: "150px" }}>
+                        <div style={{ marginTop: "200px" }}>
                             <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/logoGoogle.png'></img>} onClick={handleSubmit}></Button>
                             <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/facebookLogo.png'></img>}></Button>
                             <Button style={{ margin: 10, width: 50, height: 50 }} type="default" size='large' shape='circle' icon={<img style={{ width: 30, height: 30 }} src='/githubLogo.png'></img>} ></Button>

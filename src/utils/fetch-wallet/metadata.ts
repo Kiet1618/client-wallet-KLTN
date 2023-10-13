@@ -531,6 +531,12 @@ export const getMetadata = async (
         publicKey: publicShareB.toString('hex'),
         owner: owner.toLowerCase(),
       });
+      const data: GetMetadataResponse = {
+        encryptedMetadata,
+        publicKey: publicShareB.toString('hex'),
+        owner: owner.toLowerCase(),
+      }
+      return { error: null, data: data }
     } catch (err) {
       error = {
         errorMessage: err?.response?.data.message,

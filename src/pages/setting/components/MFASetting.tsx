@@ -212,7 +212,7 @@ export default function Profile() {
       <ChangeMFAContainer>
         <RecoveryChangeContainer span={24}>
           <Typography.Title level={4}>Recovery email</Typography.Title>
-          <Input value={recoveryEmail} onChange={(e) => setRecoveryEmail(e.target.value)} disabled={!isChangeRecovery} />
+          <Input style={{ color: "gray" }} value={recoveryEmail} onChange={(e) => setRecoveryEmail(e.target.value)} disabled={!isChangeRecovery} />
           <div className='btn-group'>
             {!isChangeRecovery && (
               <Button type='primary' size='large' onClick={() => setIsChangeRecovery(true)}>
@@ -238,7 +238,7 @@ export default function Profile() {
           <Typography.Title level={4}>Account password</Typography.Title>
           {!isChangePassword && (
             <div>
-              <Input.Password style={{ marginBottom: '8px' }} value='*********' disabled />
+              <Input.Password color='#ccc' style={{ marginBottom: '8px', color: "white !important" }} value='*********' disabled />
               <div className='btn-group'>
                 <Button type='primary' size='large' onClick={() => setIsChangePassword(true)}>
                   Change
