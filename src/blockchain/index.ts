@@ -69,9 +69,12 @@ export const getBalance = async (web3: Web3, symbol: string = 'ETH', tokenContra
     catch { return '0' }
 }
 export const getGasPrice = async (web3: Web3) => {
-    const price = await web3.eth.getGasPrice();
-    const ethValue = Math.round((parseInt(price, 16) / 10 ** 18) * 1000000) / 1000000;
-    return ethValue;
+    try {
+        const price = await web3.eth.getGasPrice();
+        const ethValue = Math.round((parseInt(price, 16) / 10 ** 18) * 1000000) / 1000000;
+        return ethValue;
+    }
+    catch { return 0 }
 }
 export const sendTransaction = async (web3: Web3, data: TransferNative, privateKey: string) => {
     const { to, value, symbol, tokenContact } = data;
